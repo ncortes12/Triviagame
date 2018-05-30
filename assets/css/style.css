@@ -1,0 +1,16 @@
+body {background-image:url(../images/background.jpg);}
+
+.question {color:ghostwhite;
+        font-size:28px;
+        margin-bottom:10px;
+            }
+
+.answer {color:ghostwhite;
+        font-size:20px;
+        background:darkcyan;
+        margin-bottom:10px;
+        }
+
+.answer:hover {background-color:black;
+        font-size:28px;}
+
