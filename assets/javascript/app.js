@@ -32,18 +32,21 @@ var wrong = 0;
 var timer = 60;
 var clockRunning = false;
 
-var i = 0;
+var i = 2;
 var counter;
 
 
 function count() {
     timer--;
+    $(".time").text(timer);
 }
 
-if (!clockRunning) {
-    intervalId = setInterval(stopwatch.count, 1000);
-    clockRunning = true;
-  }
+function run() {
+    if (!clockRunning) {
+        counter = setInterval(count, 1000);
+        clockRunning = true;
+    }
+}
 
 
 function game() {
@@ -52,18 +55,20 @@ function game() {
     $(".answer-2").text(triviaQuestions[i].answers[1].answer);
     $(".answer-3").text(triviaQuestions[i].answers[2].answer);
     $(".answer-4").text(triviaQuestions[i].answers[3].answer);
-    checker();
-    console.log(i);
+
+
+
 
 
 }
 
 function checker() {
     $(".answer-1").on("click", function () {
-        if (triviaQuestions[i].answers[0].correct = true) {
+        if ((triviaQuestions[i].answers[0].correct) == true) {
             correct++;
-            i++;
+
             console.log("correct");
+            console.log("i");
         }
         else {
             wrong++;
@@ -73,39 +78,39 @@ function checker() {
     });
 
     $(".answer-2").on("click", function () {
-        if (triviaQuestions[i].answers[1].correct = true) {
+        if ((triviaQuestions[i].answers[1].correct) == true) {
             correct++;
-            i++;
+
             console.log("correct");
         }
         else {
             wrong++;
-            i++;
+
             console.log("wrong");
         }
     });
 
     $(".answer-3").on("click", function () {
-        if (triviaQuestions[i].answers[2].correct = true) {
+        if ((triviaQuestions[i].answers[2].correct) == true) {
             correct++;
-            i++;
+
             console.log("correct");
         }
         else {
             wrong++;
-            i++;
+
             console.log("wrong");
         }
     });
     $(".answer-4").on("click", function () {
-        if (triviaQuestions[i].answers[3].correct = true) {
+        if ((triviaQuestions[i].answers[3].correct) == true) {
             correct++;
-            i++;
+
             console.log("correct");
         }
         else {
             wrong++;
-            i++;
+
             console.log("wrong");
         }
     });
@@ -125,7 +130,8 @@ function checker() {
 $(".start").on("click", function () {
     $("#game").show();
     game();
-    
+    run();
+    checker();
 
 
 })
