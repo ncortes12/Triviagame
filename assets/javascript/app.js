@@ -25,14 +25,15 @@ var triviaQuestions = [
         { answer: "275", correct: false }, { answer: "200", correct: false }]
     },
 
+
 ];
 
 var correct = 0;
 var wrong = 0;
-var timer = 60;
+var timer = 180;
 var clockRunning = false;
 
-var i = 2;
+var i = 0;
 var counter;
 
 
@@ -50,42 +51,55 @@ function run() {
 
 
 function game() {
+
     $(".question").text(triviaQuestions[i].question);
     $(".answer-1").text(triviaQuestions[i].answers[0].answer);
     $(".answer-2").text(triviaQuestions[i].answers[1].answer);
     $(".answer-3").text(triviaQuestions[i].answers[2].answer);
     $(".answer-4").text(triviaQuestions[i].answers[3].answer);
 
-
-
-
-
 }
+function endGame() {
+    if (i == 3) {
+        $("#game").hide();
+        $(".scoreboard").show();
+        $(".scoreboard").append("Correct: " + correct + "<br></br>");
+        $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
+        $(".restart").append("<button>Restart</button>");
+        console.log("i'm working");
+    }
+    else {
+        i++;
+        console.log("i'm working too");
+        game();
+    }
+}
+
+
 
 function checker() {
     $(".answer-1").on("click", function () {
         if ((triviaQuestions[i].answers[0].correct) == true) {
             correct++;
-
             console.log("correct");
-            console.log("i");
+            endGame();
         }
         else {
             wrong++;
-            i++;
             console.log("wrong");
+            endGame();
         }
     });
 
     $(".answer-2").on("click", function () {
         if ((triviaQuestions[i].answers[1].correct) == true) {
             correct++;
-
+            endGame();
             console.log("correct");
         }
         else {
             wrong++;
-
+            endGame();
             console.log("wrong");
         }
     });
@@ -93,48 +107,48 @@ function checker() {
     $(".answer-3").on("click", function () {
         if ((triviaQuestions[i].answers[2].correct) == true) {
             correct++;
-
+            endGame();
             console.log("correct");
         }
         else {
             wrong++;
-
+            endGame();
             console.log("wrong");
         }
     });
     $(".answer-4").on("click", function () {
         if ((triviaQuestions[i].answers[3].correct) == true) {
             correct++;
-
+            endGame();
             console.log("correct");
         }
         else {
             wrong++;
-
+            endGame();
             console.log("wrong");
         }
     });
 
-
-
-
-
 };
-
-
-
-
-
-
 
 $(".start").on("click", function () {
     $("#game").show();
     game();
     run();
     checker();
-
-
 })
+
+$(".restart").on("click", function () {
+    $("#game").show();
+    $(".scoreboard").empty();
+    i = 0;
+    game();
+    run();
+    checker();
+})
+
+
+
 
 
 
