@@ -135,6 +135,8 @@ function checker() {
 
 $(".start").on("click", function () {
     $("#game").show();
+    $(".start").hide();
+
     game();
     run();
     checker();
