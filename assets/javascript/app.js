@@ -46,8 +46,20 @@ function run() {
     if (!clockRunning) {
         counter = setInterval(count, 1000);
         clockRunning = true;
+        
     }
 }
+
+// function timeOut (){
+//     if (timer == 0){
+//         console.log("i'm working");
+//         $("#game").hide();
+//         $(".scoreboard").show();
+//         $(".scoreboard").append("Correct: " + correct + "<br></br>");
+//         $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
+//         $(".restart").append("<button>Restart</button>");
+        
+// }}  I could not get my timeout function to work =(
 
 
 function game() {
@@ -66,12 +78,11 @@ function endGame() {
         $(".scoreboard").append("Correct: " + correct + "<br></br>");
         $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
         $(".restart").append("<button>Restart</button>");
-        console.log("i'm working");
+        
     }
     else {
         i++;
-        console.log("i'm working too");
-        game();
+       game();
     }
 }
 
@@ -81,12 +92,10 @@ function checker() {
     $(".answer-1").on("click", function () {
         if ((triviaQuestions[i].answers[0].correct) == true) {
             correct++;
-            console.log("correct");
             endGame();
         }
         else {
             wrong++;
-            console.log("wrong");
             endGame();
         }
     });
@@ -95,12 +104,10 @@ function checker() {
         if ((triviaQuestions[i].answers[1].correct) == true) {
             correct++;
             endGame();
-            console.log("correct");
         }
         else {
             wrong++;
             endGame();
-            console.log("wrong");
         }
     });
 
@@ -108,24 +115,20 @@ function checker() {
         if ((triviaQuestions[i].answers[2].correct) == true) {
             correct++;
             endGame();
-            console.log("correct");
         }
         else {
             wrong++;
             endGame();
-            console.log("wrong");
         }
     });
     $(".answer-4").on("click", function () {
         if ((triviaQuestions[i].answers[3].correct) == true) {
             correct++;
             endGame();
-            console.log("correct");
         }
         else {
             wrong++;
             endGame();
-            console.log("wrong");
         }
     });
 
@@ -136,15 +139,19 @@ $(".start").on("click", function () {
     game();
     run();
     checker();
+   
 })
 
 $(".restart").on("click", function () {
     $("#game").show();
     $(".scoreboard").empty();
+    $(".restart").empty();
     i = 0;
+    timer = 180;
     game();
     run();
-    checker();
+   ;
+  
 })
 
 
