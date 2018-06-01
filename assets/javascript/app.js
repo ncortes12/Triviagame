@@ -30,7 +30,7 @@ var triviaQuestions = [
 
 var correct = 0;
 var wrong = 0;
-var timer = 180;
+var timer = 120;
 var clockRunning = false;
 
 var i = 0;
@@ -46,20 +46,19 @@ function run() {
     if (!clockRunning) {
         counter = setInterval(count, 1000);
         clockRunning = true;
-        
+
     }
 }
 
-// function timeOut (){
-//     if (timer == 0){
-//         console.log("i'm working");
-//         $("#game").hide();
-//         $(".scoreboard").show();
-//         $(".scoreboard").append("Correct: " + correct + "<br></br>");
-//         $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
-//         $(".restart").append("<button>Restart</button>");
-        
-// }}  I could not get my timeout function to work =(
+var windowTimeout = setTimeout(function () {
+    $("#game").hide();
+    alert("You ran out of time!")
+    $(".scoreboard").show();
+    $(".scoreboard").append("Correct: " + correct + "<br></br>");
+    $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
+    $(".restart").append("<button>Restart</button>");
+}, 120000);
+
 
 
 function game() {
@@ -78,11 +77,11 @@ function endGame() {
         $(".scoreboard").append("Correct: " + correct + "<br></br>");
         $(".scoreboard").append("Wrong: " + wrong + "<br></br>");
         $(".restart").append("<button>Restart</button>");
-        
+
     }
     else {
         i++;
-       game();
+        game();
     }
 }
 
@@ -139,7 +138,7 @@ $(".start").on("click", function () {
     game();
     run();
     checker();
-   
+
 })
 
 $(".restart").on("click", function () {
@@ -150,8 +149,8 @@ $(".restart").on("click", function () {
     timer = 180;
     game();
     run();
-   ;
-  
+    ;
+
 })
 
 
